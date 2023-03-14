@@ -18,6 +18,7 @@ const create = async (product: TCreateProduct): Promise<TCreatedProduct> => {
 const getAll = async (): Promise<IProduct[]> => {
   const [result] = await connection
     .execute<RowDataPacket[] & IProduct[]>('SELECT * FROM Trybesmith.products');
+    
   return result;
 };
 

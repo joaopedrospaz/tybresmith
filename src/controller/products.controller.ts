@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
+import { TCreateProduct } from '../interfaces';
 import productService from '../service/products.sercive';
 
-const create = async (req: Request, res: Response) => {
+const create = async (req: Request<object, object, TCreateProduct>, res: Response) => {
   const data = req.body;
   const result = await productService.createProduct(data);
   res.status(201).json(result);
