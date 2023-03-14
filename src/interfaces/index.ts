@@ -19,3 +19,9 @@ export interface IUser {
 export type TCreateUser = Omit <IUser, 'id'>;
 
 export type TCreatedUSer = Omit <IUser, 'password'>;
+
+export interface IOrder {
+  'id': number,
+  'userId': number,
+  'productsIds': number[]
+}
