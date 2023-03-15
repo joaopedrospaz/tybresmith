@@ -3,11 +3,11 @@ import { TCreateUser } from '../interfaces';
 import userService from '../service/user.service';
 import tokenFunciton from '../utils/token';
 
-const createUser = async (req: Request<object, object, TCreateUser>, res: Response) => {
-  const user = req.body;
+const createUser = async (req: Request, res: Response) => {
+  const user: TCreateUser = req.body;
   const result = await userService.createUser(user);
   const token = tokenFunciton.generateToken(result);
-  res.status(201).json({ token });
+  return res.status(201).json({ token });
 };
 
 const login = async (req: Request, res: Response) => {

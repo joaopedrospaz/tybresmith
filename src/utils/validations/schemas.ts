@@ -26,10 +26,21 @@ const schemaUser = Joi.object().keys({
   'any.required': required,
 });
 
+const schemaNewOrder = Joi.object().keys({
+  productsIds: Joi.array().items(Joi.number().required()).required(),
+  user: Joi.object(),
+}).messages({
+  'any.required': required,
+  'array.base': '"{#key}" must be an array', 
+  'number.base': '"productsIds" must include only numbers',
+  'array.includesRequiredUnknowns': '"productsIds" must include only numbers',
+});
+
 const schemas = {
   shcemaProduct,
   schemaUser,
   shcemaLogin,
+  schemaNewOrder,
 };
 
 export default schemas;

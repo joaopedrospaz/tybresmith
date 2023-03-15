@@ -20,10 +20,18 @@ const validationLogin = (user: IUser) => {
   return { type: null, message: '' };
 };
 
+const validateNewOrder = (order: number[]) => {
+  const { error } = schemas.schemaNewOrder.validate(order);
+  
+  if (error) return { type: error.details[0].type, message: error.details[0].message };
+  return { type: null, message: '' };
+};
+
 const validations = {
   validationProduct,
   validationUSer,
   validationLogin,
+  validateNewOrder,
 };
 
 export default validations;
