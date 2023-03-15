@@ -9,7 +9,7 @@ const getAllOrders = async (req: Request, res: Response): Promise<Response> => {
 };
 
 const createOrder = async (req: Request, res: Response): Promise<Response> => {
-  const { productsIds } = req.body.productsIds;
+  const { productsIds } = req.body;
   const { id } = req.body.user;
   const result: number[] = await orderService.createOrder(id, productsIds);
   return res.status(201).json({
