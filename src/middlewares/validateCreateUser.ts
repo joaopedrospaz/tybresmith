@@ -5,7 +5,7 @@ const validateCreateUser = async (req: Request, res: Response, next: NextFunctio
   const user = req.body;
   const { type, message } = validations.validationUSer(user);
   if (type === 'any.required') return res.status(400).json({ message });
-  return res.status(422).json({ message });
+  if (type) return res.status(422).json({ message });
   next();
 }; 
 

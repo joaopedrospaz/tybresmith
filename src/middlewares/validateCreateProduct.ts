@@ -5,7 +5,7 @@ const validateCreateProduct = async (req: Request, res: Response, next: NextFunc
   const product = req.body;
   const { type, message } = validations.validationProduct(product);
   if (type === 'any.required') return res.status(400).json({ message });
-  return res.status(422).json({ message });
+  if (type) return res.status(422).json({ message });
   next();
 }; 
 
