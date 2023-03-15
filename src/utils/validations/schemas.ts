@@ -18,10 +18,10 @@ const shcemaLogin = Joi.object().keys({
 });
 
 const schemaUser = Joi.object().keys({
-  username: Joi.string().required(),
-  vocation: Joi.string().required(),
-  level: Joi.number().required(),
-  password: Joi.string().required(),  
+  username: Joi.string().min(3).required(),
+  vocation: Joi.string().min(3).required(),
+  level: Joi.number().min(1).required(),
+  password: Joi.string().min(8).required(),  
 }).messages({
   'any.required': required,
 });
